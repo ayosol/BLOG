@@ -1,17 +1,16 @@
 package com.example.blog.activities;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.blog.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -85,7 +84,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void updateUI() {
-        Intent homeActivityIntent = new Intent(LoginActivity.this, HomeActivity.class);
+        Intent homeActivityIntent = new Intent(LoginActivity.this, HomeNavActivity.class);
         startActivity(homeActivityIntent);
         finish();
     }
