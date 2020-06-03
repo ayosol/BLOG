@@ -57,6 +57,8 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 else {
                     //Fields are complete and okay
+                    loadingProgressBar.setVisibility(View.VISIBLE);
+                    btn_login.setVisibility(View.INVISIBLE);
                     signIn(email, password);
                 }
             }

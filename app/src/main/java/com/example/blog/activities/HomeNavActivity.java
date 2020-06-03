@@ -1,12 +1,12 @@
 package com.example.blog.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -17,6 +17,9 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.bumptech.glide.Glide;
 import com.example.blog.R;
+import com.example.blog.fragments.HomeFragment;
+import com.example.blog.fragments.ProfileFragment;
+import com.example.blog.fragments.SettingsFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
@@ -99,21 +102,21 @@ public class HomeNavActivity extends AppCompatActivity implements com.google.and
 
         switch (menuItem.getItemId()) {
             case R.id.nav_home:
+                getSupportActionBar().setTitle("HOME");
+                getSupportFragmentManager().beginTransaction().replace(R.id.container, new HomeFragment()).commit();
                 break;
-            case R.id.nav_gallery:
-                Toast.makeText(this, "Gallery clicked", Toast.LENGTH_SHORT).show();
+            case R.id.nav_profile:
+                getSupportActionBar().setTitle("PROFILE");
+                getSupportFragmentManager().beginTransaction().replace(R.id.container, new ProfileFragment()).commit();
                 break;
-            case R.id.nav_slideshow:
-                Toast.makeText(this, "Slideshow clicked", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.nav_tools:
-                Toast.makeText(this, "Settings clicked", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.nav_share:
-                Toast.makeText(this, "Share clicked", Toast.LENGTH_SHORT).show();
+            case R.id.nav_settings:
+                getSupportActionBar().setTitle("SETTINGS");
+                getSupportFragmentManager().beginTransaction().replace(R.id.container, new SettingsFragment()).commit();
                 break;
             case R.id.nav_log_out:
-                Toast.makeText(this, "Log out clicked", Toast.LENGTH_SHORT).show();
+                //Sign user out here
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(HomeNavActivity.this, LoginActivity.class));
                 finish();
                 break;
         }
