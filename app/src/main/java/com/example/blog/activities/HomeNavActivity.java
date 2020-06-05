@@ -95,6 +95,8 @@ public class HomeNavActivity extends AppCompatActivity implements com.google.and
         mNavigationView.setNavigationItemSelectedListener(this);
 
         updateNavHeader();
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, new HomeFragment()).commit();
     }
 
     //Initialize popup here so you can show later
